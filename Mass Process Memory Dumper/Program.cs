@@ -23,6 +23,14 @@ namespace Mass_Process_Memory_Dumper {
         static string path = AppDomain.CurrentDomain.BaseDirectory;
 
         static void Main(string[] args) {
+            Console.CursorVisible = false;
+
+            Console.WindowWidth = 80;
+            Console.BufferWidth = 80;
+
+            Console.WindowHeight = 20;
+            Console.BufferHeight = 20;
+
             Console.WriteLine("Mass Process Memory Dumper - github.com/thatnword");
 
             // setup all needed directories and files
@@ -46,7 +54,6 @@ namespace Mass_Process_Memory_Dumper {
             dumpProcesses();
 
             // wait for all dumps to be fully finished
-            Process[] proc;
             int currentProcCount = Process.GetProcessesByName("dumper").Count();
 
             while (currentProcCount > 0) {
@@ -54,7 +61,7 @@ namespace Mass_Process_Memory_Dumper {
                 Thread.Sleep(5);
             }
 
-            Console.WriteLine($"\nFinished dumping all system processes & services in {sw.ElapsedMilliseconds}ms.");
+            Console.WriteLine($"\n[#] Step 3\n -  Finished dumping all processes in {sw.ElapsedMilliseconds}ms");
             Console.ReadLine();
         }
 
